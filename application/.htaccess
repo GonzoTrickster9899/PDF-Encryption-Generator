@@ -1,0 +1,24 @@
+RewriteEngine On
+
+# Redirect to remove index.php from URL
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+
+# Prevent directory listing
+Options -Indexes
+
+# Set default index
+DirectoryIndex index.php
+
+# Protect application folder
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_URI} ^application.*
+    RewriteRule ^(.*)$ /index.php?/$1 [L]
+</IfModule>
+
+# Protect system folder
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_URI} ^system.*
+    RewriteRule ^(.*)$ /index.php?/$1 [L]
+</IfModule>
