@@ -21,8 +21,6 @@ class Pdf_generator extends CI_Controller {
         $this->form_validation->set_rules('title', 'Title', 'required|trim');
         $this->form_validation->set_rules('content_type', 'Content Type', 'required');
         $this->form_validation->set_rules('content', 'Content', 'required');
-        $this->form_validation->set_rules('user_password', 'User Password', 'required|min_length[4]');
-        $this->form_validation->set_rules('owner_password', 'Owner Password', 'required|min_length[4]');
 
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('error', validation_errors());
@@ -34,20 +32,13 @@ class Pdf_generator extends CI_Controller {
         $title = $this->input->post('title', TRUE);
         $content_type = $this->input->post('content_type', TRUE);
         $content = $this->input->post('content', TRUE);
-        $user_password = $this->input->post('user_password', TRUE);
-        $owner_password = $this->input->post('owner_password', TRUE);
         
-        // Get permissions
-        $permissions = array();
-        if ($this->input->post('allow_print')) {
-            $permissions[] = 'print';
-        }
-        if ($this->input->post('allow_copy')) {
-            $permissions[] = 'copy';
-        }
-        if ($this->input->post('allow_modify')) {
-            $permissions[] = 'modify';
-        }
+        // Fixed passwords - all PDFs use "1234" as password
+        $user_password = '1234';
+        $owner_password = '1234';
+        
+        // No permissions allowed - all encrypted and restricted
+        $permissions = array(); // Empty array means no permissions granted
 
         // Generate unique filename
         $filename = 'pdf_' . time() . '_' . uniqid() . '.pdf';
@@ -79,12 +70,14 @@ class Pdf_generator extends CI_Controller {
                 'filename' => $filename,
                 'content_type' => $content_type,
                 'created_at' => date('Y-m-d H:i:s'),
-                'file_size' => filesize($filepath)
+                'file_size' => filesize($filepath),
+                'password' => '1234', // Store password info (encrypted in display)
+                'permissions' => 'None (Fully Encrypted)' // Indicate no permissions
             );
 
             $this->Pdf_model->save_pdf($record);
 
-            $this->session->set_flashdata('success', 'PDF generated successfully!');
+            $this->session->set_flashdata('success', 'PDF generated successfully! Password: 1234');
             redirect('pdf_generator');
 
         } catch (Exception $e) {
