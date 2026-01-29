@@ -1,11 +1,23 @@
 [
     {
-        "id": "6964b8bed93b3",
-        "title": "Lorem Ipsum",
-        "filename": "pdf_1768208574_6964b8bec8cb2.pdf",
+        "id": "696752f740e4b",
+        "title": "Leron Leron Sinta",
+        "filename": "pdf_1768379127_696752f73cd35.pdf",
         "content_type": "text",
-        "created_at": "2026-01-12 09:02:54",
-        "file_size": 9301
+        "created_at": "2026-01-14 08:25:27",
+        "file_size": 9042,
+        "password": "1234",
+        "permissions": "None (Fully Encrypted)"
+    },
+    {
+        "id": "696750844cb0b",
+        "title": "Test Encrypted Document",
+        "filename": "pdf_1768378500_6967508434c0b.pdf",
+        "content_type": "text",
+        "created_at": "2026-01-14 08:15:00",
+        "file_size": 8462,
+        "password": "1234",
+        "permissions": "None (Fully Encrypted)"
     },
     {
         "id": "6966f9ac2d9d3",
@@ -14,5 +26,23 @@
         "content_type": "text",
         "created_at": "2026-01-14 02:04:28",
         "file_size": 7290
+    },
+    {
+        "id": "6964b8bed93b3",
+        "title": "Lorem Ipsum",
+        "filename": "pdf_1768208574_6964b8bec8cb2.pdf",
+        "content_type": "text",
+        "created_at": "2026-01-12 09:02:54",
+        "file_size": 9301
+    },
+    {
+        "id": "69688b1f1b65c",
+        "title": "Leron Leron Sinta",
+        "filename": "pdf_1768459038_69688b1eefb51.pdf",
+        "content_type": "html",
+        "created_at": "2026-01-15 06:37:19",
+        "file_size": 8452,
+        "password": "1234",
+        "permissions": "None (Fully Encrypted)"
     }
 ]
